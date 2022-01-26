@@ -264,7 +264,6 @@ setup_cache() {
   Rootfstarball="$Extractdir/$Rootfstarball"
   
   mkdir -p "$Extractdir"
-  rm -rf "$Extractdir"/* 2>/dev/null ||:
   mkdir -p "$Layerdir"
 }
 main() {
@@ -276,7 +275,8 @@ main() {
   
   # pull image
   note "Pulling image $Imagename from $Imagesource"
-  skopeo copy "$Imagesource" dir:"$Layerdir" 1>&2 || error "Pulling image failed"
+  skopeo copy "$Imagesource" dir:"$Layerdir" 1>&2 || error "Pulling image failed.
+Maybe you forgot to add a tag like ':latest'?"
   
   # create rootfs tarball
   note "Sometimes the layer tarballs seem to be corrupted.
