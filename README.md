@@ -17,8 +17,10 @@ image2rootfs [OPTIONS] IMAGENAME
       --version
 ```
 ## Dependencies:
- - skopeo
- - python|python3
- - tar
- - gzip
- - file
+```
+  skopeo
+  python|python3
+  tar
+  gzip
+  file
+```
