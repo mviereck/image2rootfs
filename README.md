@@ -5,7 +5,7 @@ Pulls an image and creates a tarball at `/tmp/image2rootfs/rootfs-<image-name>.t
 Pulls from Docker hub by default or from elsewhere specified with 
 skopeo image name syntax (see `man skopeo`, section `IMAGE NAMES`).
 
-## syntax: 
+## Syntax: 
 ```
 image2rootfs [OPTIONS] IMAGENAME
 ```
