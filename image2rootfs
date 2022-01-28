@@ -109,7 +109,7 @@ $Inspect"
   # find layer names of image. Each layer is a tarball, sometimes .tar, sometimes .tar.gz
   Layercount=0
 #  for Line in $(parse_inspect "$Inspect" rootfs diff_ids); do
-  for Line in $(parse_inspect "$(cat $Layerdir/manifest.json | jq)" layers | grep -o -P "(?<=sha256:).*?(?='}')"); do
+  for Line in $(parse_inspect "$(cat $Layerdir/manifest.json)" layers | grep -o -P "(?<=sha256:).*?(?='}')"); do
     Layercount="$((Layercount+1))"
     Layers[$Layercount]="$Layerdir/$(echo $Line | cut -d: -f2 | cut -d"'" -f1)"
     
@@ -120,7 +120,8 @@ $Inspect"
   done
 
   # use base layer as start for rootfs
-  mv "${Layers[1]}" "$Rootfstarball"
+  mv "${Layers[1]}" "$Rootfstarball" || error "Failed to move base layer to $Rootfstarball.
+Maybe there already is a tarball with same name?"
 
   for Layer in $(seq 2 $Layercount); do
     note "Processing layer $Layer"
@@ -281,7 +282,8 @@ Maybe you forgot to add a tag like ':latest'?"
   # create rootfs tarball
   note "Sometimes the layer tarballs seem to be corrupted.
 At least 'tar' throws error messages.
-Mostly the generated rootfs is usable nonetheless."
+Mostly the generated rootfs is usable nonetheless.
+Building the images again might fix the issues."
   flatten_layers
   create_startscript
   

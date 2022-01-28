@@ -1,5 +1,5 @@
 # image2rootfs
-Create a rootfs tarball from a Docker image
+Create a rootfs tarball from a Docker image.
 
 Pulls an image and creates a tarball at `/tmp/image2rootfs/rootfs-<image-name>.tar`.
 Pulls from Docker hub by default or from elsewhere specified with 
