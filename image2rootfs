@@ -283,7 +283,7 @@ Maybe you forgot to add a tag like ':latest'?"
   note "Sometimes the layer tarballs seem to be corrupted.
 At least 'tar' throws error messages.
 Mostly the generated rootfs is usable nonetheless.
-Building the images again might fix the issues."
+Building the image again can fix the issues."
   flatten_layers
   create_startscript
   
@@ -295,7 +295,7 @@ Building the images again might fix the issues."
 To provide a rootfs for 'x11docker --backend=proot $Imagebasename',
 please run:
   mkdir -p $Rootfsbasedir/$Imagebasename
-  tar -C $Rootfsbasedir/$Imagebasename" -x -f $Rootfstarball
+  tar -C $Rootfsbasedir/$Imagebasename -x -f $Rootfstarball"
   
   note "Generated rootfs tarball:"
   echo "$Rootfstarball"
